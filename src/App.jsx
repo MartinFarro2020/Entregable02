@@ -29,7 +29,7 @@ const [city, setCity] = useState(null)
     event.preventDefault();
     const cityName = event.target.cityNames.value;
     const API_KEY = "abaecf8c077398a3d6239c90ded488b7"
-    const newUrl = `https:api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
+    const newUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
    
     
     axios
@@ -75,9 +75,15 @@ const [city, setCity] = useState(null)
   
 
   return (
-    <main className = {`bg-black min-h-screen text-white font-lato flex justify-center items-center p-4 ${imagesWeather[kay?.weather[0].icon]} bg-cover`}>
-          {/* <img clasName = "w-full" src="/images/despejado.png"/> */}
+    <main className = {`textflex-col dark:bg-gray-500 dark:text-white bg-black min-h-screen text-white font-lato flex justify-center items-center p-4 ${imagesWeather[kay?.weather[0].icon]} bg-cover`}>
+          <>
+          <div className='flex mb-10 w-40 h-10 bg-black text-center'>
+            <button>dia/noch</button>
+          </div>
+    
           <Wheater handleSubmit={handleSubmit} kay={kay}/>
+          </>
+          
     </main>
   )
 }
