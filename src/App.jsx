@@ -77,9 +77,9 @@ const [city, setCity] = useState(null)
   return (
     <main className = {`textflex-col dark:bg-gray-500 dark:text-white bg-black min-h-screen text-white font-lato flex justify-center items-center p-4 ${imagesWeather[kay?.weather[0].icon]} bg-cover`}>
           <>
-          <div className='flex mb-10 w-40 h-10 bg-black text-center'>
+          {/* <div className='flex mb-10 w-40 h-10 bg-black text-center'>
             <button>dia/noch</button>
-          </div>
+          </div> */}
     
           <Wheater handleSubmit={handleSubmit} kay={kay}/>
           </>
