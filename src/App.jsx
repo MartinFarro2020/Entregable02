@@ -30,7 +30,7 @@ const [city, setCity] = useState(null)
     const cityName = event.target.cityName.value;
     const API_KEY = "abaecf8c077398a3d6239c90ded488b7"
     const newUrl = `https:api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
-    console.log(newUrl)
+   
     
     axios
         .get(newUrl)
@@ -42,7 +42,7 @@ const [city, setCity] = useState(null)
   //! Variables:
   //! Carga en una variable una de las API
   const kay = city===null ? weatherInfo : city
-  console.log (kay)
+ 
 
   //! constante que constiene las imagenes de fondo
 
