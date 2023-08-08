@@ -27,7 +27,7 @@ const [city, setCity] = useState(null)
   //! HANDLE
   const handleSubmit = (event) => {
     event.preventDefault();
-    const cityName = event.target.cityName.value;
+    const cityName = event.target.cityNames.value;
     const API_KEY = "abaecf8c077398a3d6239c90ded488b7"
     const newUrl = `https:api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
    

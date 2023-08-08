@@ -73,7 +73,7 @@ const Wheater = ({ handleSubmit , kay }) => {
 
       <section>
           <form onSubmit={handleSubmit} className="flex-col">
-            <input autoComplete="off" id="cityName" type="text" className="mt-4 px-2 py-1 text-black rounded-l-full"/>
+            <input autoComplete="off" id="cityNames" type="text" className="mt-4 px-2 py-1 text-black rounded-l-full"/>
             <button className="bg-slate-900 rounded-r-full px-4 py-1">Search</button>
           </form>
       </section>
