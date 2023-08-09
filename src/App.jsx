@@ -10,7 +10,12 @@ function App() {
 const [weatherInfo, setWeatherInfo] = useState(null)
 const [city, setCity] = useState(null)
 
- //!CARGAR LA API 
+const [theme, setTheme] = useState("dark")
+const element = document.documentElement
+const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+ 
+
+//!CARGAR LA API 
   const success = (pos) => {
     const lat = pos.coords.latitude
     const lon = pos.coords.longitude
@@ -39,14 +44,37 @@ const [city, setCity] = useState(null)
     
   };
 
-  const changeDarkMode= () =>{
-    document.documentElement.classList.toggle("dark");
-  }
   
   //! Variables:
   //! Carga en una variable una de las API
   const kay = city===null ? weatherInfo : city
- 
+
+  //! array del darkmode
+  const options = [
+    {
+      icon:"sunny",
+      text:"light"
+    },
+    {
+      icon:"moon",
+      text:"dark"
+    },
+    {
+      icon:"desktop-outline",
+      text:"system"
+    }
+  ];
+
+  function onWindowMatch(){
+    if(
+      localStorage.theme === "dark" || (!("theme in localStorage") && darkQuery.matches)
+    ){
+      element.classList.add("dark");
+    } else {
+      element.classList.remove("dark");
+    }
+  }
+  onWindowMatch();
 
   //! constante que constiene las imagenes de fondo
 
@@ -76,24 +104,42 @@ const [city, setCity] = useState(null)
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success)
   }, [])
+
+  useEffect(() => {
+    switch (theme){
+      case `dark`:
+        element.classList.add('dark')
+        break;
+      case 'light':
+        element.classList.remove("dark");
+        break;
+
+      default:
+      
+        break;
+    }
+  }, [theme])
+  
   
 
-  return (
-    <main className = {`flex-col dark:bg-gray-500 dark:text-white bg-black min-h-screen text-white font-lato flex justify-center items-center p-4 ${imagesWeather[kay?.weather[0].icon]} bg-cover`}>
-          <>
-          <div className='mb-10 w-10 h-10  text-center rounded-full'>
-            {/* <button className='bg-[url("/images/pear.png")]'></button> */}
-
-            <button onclick={changeDarkMode} class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-              {/* <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg> */}
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAa5JREFUSEu11TFoFUEQBuAvBrGwkpCAICjB9NbBxlhoaSHYK0khiqgYg1FMUFFR1MKkUXs7wS4BTWVtLdipgYgJVhaBRBnZJ8dy9/aevGxz7N3c/+/888/sgB1eAzuMrxeCiN1OB2r9X+tA/h6mbwS3sIj1TMLfiWQwez+Cs3iQS16XwSzu4hMmsFqo0wGs4DBm8LAaX0dwEO8xiqt4UiCYTqCf04G+lAjie6Q8iXsp+DTO41jav8MC3qT9DbzE9zYS5TGPUyZ1icxhvluGJRedwesEcCcVPrYXELWKdQLLTSQlgo84git4moF0zLCEkyWCqscjtkO8hV3Yh58ZyP7ksA0MZX3yD6MD1ESwid0NBGGENfzC3hJBU4YfMI6w4qMGiaIHol9qV6kGpypWjCI/xx5cxLWEGPpHHf6LIH7qZtOblV7piSD0PYf7lUa7hKNp/xavEM9Y4agXbRvtUJot8byMZ90aCdfTkItREZ3+tRpfV4NIO/SOYXcc3woEMexido21HXaBdzvNmh8ZeNO4HsZUXT1KLsqz7duFU6dKX2+0guztP/ciUXvUSuQfKVJOGWsIYBMAAAAASUVORK5CYII="/>
-              </button>
-          </div>
-    
+  return (    
+       <main className = {`bg-black min-h-screen text-white font-lato flex justify-center items-center p-4 ${imagesWeather[kay?.weather[0].icon]} bg-cover dark:text-gray-100 dark:bg-slate-900 duration-100`}>
+            
+            {/* <section className='fixed top-5 rigth-10 duration-100 dark:bg-slate-900 bg-gray-100 rounded'>
+                  
+                    {
+                      options.map(opt=>(
+                          <button key={opt.text} onClick= {() => setTheme(opt.text)} className={`w-8 h-8 leading-9 text-lg rounded-full m-1 ${theme === opt.text && "text-sky-600"}`}>
+                              <ion-icon name={opt.icon}></ion-icon>
+                          </button>
+                      ))
+                    }
+                    
+                  
+                  
+          </section> */}
           <Wheater handleSubmit={handleSubmit} kay={kay}/>
-          </>
-          
-    </main>
+          </main>
   )
 }
 
