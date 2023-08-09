@@ -128,12 +128,12 @@ onWindowMatch();
 
       </section>
 
-      <button onClick ={handleChangeUnitTemp} className="dark:text-gray-100 dark:bg-indigo-950 opacity-70 duration-100 px-7 py-1  mt-5 bg-black text-white text-lg rounded-full">Change to °{isCelcius ? "F" : "C"} </button>
+      <button onClick ={handleChangeUnitTemp} className="dark:text-gray-100 dark:bg-indigo-950 opacity-70 duration-100 px-7 py-1  mt-5 bg-rose-900 text-white text-lg rounded-full">Change to °{isCelcius ? "F" : "C"} </button>
 
       <section>
           <form onSubmit={handleSubmit} className="flex-col">
             <input autoComplete="off" id="cityNames" type="text" className="mt-4 px-2 py-1 text-black rounded-l-full h-10"/>
-            <button className="dark:text-white dark:bg-indigo-950 opacity-70 bg-slate-900 rounded-r-full px-4 py-1 h-10 text-lg">Search</button>
+            <button className="dark:text-white dark:bg-indigo-950 opacity-70 bg-rose-900 rounded-r-full px-4 py-1 h-10 text-lg">Search</button>
           </form>
       </section>
 
