@@ -27,6 +27,7 @@ const Wheater = ({ handleSubmit , kay }) => {
 
 
   return (
+    
     <section className="text-center justify-center" >
       <h2 className="items-center font-bold text-black text-xl bg-white/60 mb-2 p-2 rounded-full">{kay?.name}</h2>
 
@@ -69,12 +70,12 @@ const Wheater = ({ handleSubmit , kay }) => {
 
       </section>
 
-      <button onClick ={handleChangeUnitTemp} className="px-7 py-1  mt-5 bg-black text-white text-lg rounded-full">Cambiar a °{isCelcius ? "F" : "C"} </button>
+      <button onClick ={handleChangeUnitTemp} className="px-7 py-1  mt-5 bg-black text-white text-lg rounded-full">Change to °{isCelcius ? "F" : "C"} </button>
 
       <section>
           <form onSubmit={handleSubmit} className="flex-col">
             <input autoComplete="off" id="cityNames" type="text" className="mt-4 px-2 py-1 text-black rounded-l-full"/>
-            <button className="bg-slate-900 rounded-r-full px-4 py-1">Search</button>
+            <button className="bg-slate-900 rounded-r-full px-4 py-1">Search City</button>
           </form>
       </section>
 

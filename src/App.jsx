@@ -38,6 +38,10 @@ const [city, setCity] = useState(null)
         .catch((err) => console.log(err));
     
   };
+
+  const changeDarkMode= () =>{
+    document.documentElement.classList.toggle("dark");
+  }
   
   //! Variables:
   //! Carga en una variable una de las API
@@ -58,7 +62,7 @@ const [city, setCity] = useState(null)
     "50d": 'bg-[url("/images/mist50d.png")]',
     "01n": 'bg-[url("/images/clearSky01n.jpg")]',
     "02n": 'bg-[url("/images/fewClouds02n.png")]',
-    "03n": 'bg-[url("/images/scatteredClouds03n.png")]',
+    "03n": 'bg-[url("/images/scatteredClouds03n.jpg")]',
     "04n": 'bg-[url("/images/brokenClouds04n.jpg")]',
     "09n": 'bg-[url("/images/showerRain09n.jpg")]',
     "10n": 'bg-[url("/images/rain10n.png")]',
@@ -75,11 +79,16 @@ const [city, setCity] = useState(null)
   
 
   return (
-    <main className = {`textflex-col dark:bg-gray-500 dark:text-white bg-black min-h-screen text-white font-lato flex justify-center items-center p-4 ${imagesWeather[kay?.weather[0].icon]} bg-cover`}>
+    <main className = {`flex-col dark:bg-gray-500 dark:text-white bg-black min-h-screen text-white font-lato flex justify-center items-center p-4 ${imagesWeather[kay?.weather[0].icon]} bg-cover`}>
           <>
-          {/* <div className='flex mb-10 w-40 h-10 bg-black text-center'>
-            <button>dia/noch</button>
-          </div> */}
+          <div className='mb-10 w-10 h-10  text-center rounded-full'>
+            {/* <button className='bg-[url("/images/pear.png")]'></button> */}
+
+            <button onclick={changeDarkMode} class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+              {/* <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg> */}
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAa5JREFUSEu11TFoFUEQBuAvBrGwkpCAICjB9NbBxlhoaSHYK0khiqgYg1FMUFFR1MKkUXs7wS4BTWVtLdipgYgJVhaBRBnZJ8dy9/aevGxz7N3c/+/888/sgB1eAzuMrxeCiN1OB2r9X+tA/h6mbwS3sIj1TMLfiWQwez+Cs3iQS16XwSzu4hMmsFqo0wGs4DBm8LAaX0dwEO8xiqt4UiCYTqCf04G+lAjie6Q8iXsp+DTO41jav8MC3qT9DbzE9zYS5TGPUyZ1icxhvluGJRedwesEcCcVPrYXELWKdQLLTSQlgo84git4moF0zLCEkyWCqscjtkO8hV3Yh58ZyP7ksA0MZX3yD6MD1ESwid0NBGGENfzC3hJBU4YfMI6w4qMGiaIHol9qV6kGpypWjCI/xx5cxLWEGPpHHf6LIH7qZtOblV7piSD0PYf7lUa7hKNp/xavEM9Y4agXbRvtUJot8byMZ90aCdfTkItREZ3+tRpfV4NIO/SOYXcc3woEMexido21HXaBdzvNmh8ZeNO4HsZUXT1KLsqz7duFU6dKX2+0guztP/ciUXvUSuQfKVJOGWsIYBMAAAAASUVORK5CYII="/>
+              </button>
+          </div>
     
           <Wheater handleSubmit={handleSubmit} kay={kay}/>
           </>
