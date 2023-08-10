@@ -37,10 +37,6 @@ const options = [
     icon:"moon",
     text:"dark"
   },
-  {
-    icon:"desktop-outline",
-    text:"system"
-  }
 ];
 
 function onWindowMatch(){
@@ -134,7 +130,7 @@ onWindowMatch();
 
       <section>
           <form onSubmit={handleSubmit} className="flex-col">
-            <input autoComplete="off" id="cityNames" type="text" className="mt-4 px-2 py-1 text-black rounded-l-full h-10"/>
+            <input autoComplete="off" id="cityNames" type="text" className="mt-4 px-2 py-1 text-black rounded-l-full h-10 outline-none" placeholder="Search for a city"/>
             <button className="dark:text-white dark:bg-indigo-950 opacity-70 bg-rose-900 rounded-r-full px-4 py-1 h-10 text-lg">Search</button>
           </form>
       </section>
