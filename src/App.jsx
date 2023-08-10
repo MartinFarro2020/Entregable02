@@ -10,9 +10,7 @@ function App() {
 const [weatherInfo, setWeatherInfo] = useState(null)
 const [city, setCity] = useState(null)
 
-const [theme, setTheme] = useState("dark")
-const element = document.documentElement
-const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+
  
 
 //!CARGAR LA API 
@@ -49,32 +47,7 @@ const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
   //! Carga en una variable una de las API
   const kay = city===null ? weatherInfo : city
 
-  //! array del darkmode
-  const options = [
-    {
-      icon:"sunny",
-      text:"light"
-    },
-    {
-      icon:"moon",
-      text:"dark"
-    },
-    {
-      icon:"desktop-outline",
-      text:"system"
-    }
-  ];
-
-  function onWindowMatch(){
-    if(
-      localStorage.theme === "dark" || (!("theme in localStorage") && darkQuery.matches)
-    ){
-      element.classList.add("dark");
-    } else {
-      element.classList.remove("dark");
-    }
-  }
-  onWindowMatch();
+  
 
   //! constante que constiene las imagenes de fondo
 
@@ -105,41 +78,14 @@ const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
     navigator.geolocation.getCurrentPosition(success)
   }, [])
 
-  useEffect(() => {
-    switch (theme){
-      case `dark`:
-        element.classList.add('dark')
-        break;
-      case 'light':
-        element.classList.remove("dark");
-        break;
-
-      default:
-      
-        break;
-    }
-  }, [theme])
   
   
 
   return (    
-       <main className = {`bg-black min-h-screen text-white font-lato flex justify-center items-center p-4 ${imagesWeather[kay?.weather[0].icon]} bg-cover dark:text-gray-100 dark:bg-slate-900 duration-100`}>
+       <main className = {`bg-black min-h-screen text-white font-lato flex justify-center items-center p-4 ${imagesWeather[kay?.weather[0].icon]} bg-cover `}>
             
-            {/* <section className='fixed top-5 rigth-10 duration-100 dark:bg-slate-900 bg-gray-100 rounded'>
-                  
-                    {
-                      options.map(opt=>(
-                          <button key={opt.text} onClick= {() => setTheme(opt.text)} className={`w-8 h-8 leading-9 text-lg rounded-full m-1 ${theme === opt.text && "text-sky-600"}`}>
-                              <ion-icon name={opt.icon}></ion-icon>
-                          </button>
-                      ))
-                    }
-                    
-                  
-                  
-          </section> */}
           <Wheater handleSubmit={handleSubmit} kay={kay}/>
-          </main>
+      </main>
   )
 }
 

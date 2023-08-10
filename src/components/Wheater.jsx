@@ -72,10 +72,9 @@ onWindowMatch();
   
 
   return (
+    <>
     
-    <section className="text-center justify-center " >
-
-              <section className='fixed top-5 rigth-10 duration-100 dark:bg-slate-900 bg-gray-100 rounded'>
+    <div className='fixed top-5 rigth-10 duration-100 dark:bg-slate-900 bg-gray-100 opacity-70 rounded justify-end'>
                                 
                                   {
                                     options.map(opt=>(
@@ -85,7 +84,10 @@ onWindowMatch();
                                     ))
                                   }
                    
-              </section>
+      </div>
+    <section className="text-center" >
+
+      
 
       <h2 className="dark:text-gray-100 dark:bg-indigo-950 opacity-70 duration-100 items-center font-bold text-black text-xl bg-white/60 mb-2 p-2 rounded-full">{kay?.name}</h2>
 
@@ -138,6 +140,7 @@ onWindowMatch();
       </section>
 
     </section>
+    </>
   )
 }
 export default Wheater
